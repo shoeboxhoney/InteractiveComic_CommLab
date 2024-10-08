@@ -8,9 +8,9 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Prevent page overflow */
-    display: flex;
-    flex-direction: column;
+    overflow: hidden; 
+    font-family: 'Indie Flower', cursive; /* Set default font for the entire document */
+    
 }
 
 /* Navbar styles */
@@ -18,15 +18,15 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
-    color: aliceblue;
+    background-color: #656e33;
+    color: #f0ede2;
     padding: 10px 20px;
+    position: fixed; 
     width: 100%;
-    position: fixed; /* Keep the navbar fixed at the top */
-    top: 0;
-    z-index: 10; /* Ensure the navbar is always on top */
+    z-index: 10; 
 }
 
+/* Navbar links styling */
 .navbar-links ul {
     margin: 0;
     padding: 0;
@@ -39,15 +39,16 @@ body, html {
 
 .navbar-links li a {
     text-decoration: none;
-    color: aliceblue;
+    color: #f0ede2;
     padding: 1rem;
     display: block;
 }
 
 .navbar-links li:hover {
-    background-color: #202020;
+    background-color: #a2b387;
 }
 
+/* Toggle button styling for responsiveness */
 .toggle-button {
     display: none;
     flex-direction: column;
@@ -59,43 +60,11 @@ body, html {
 .toggle-button .bar {
     height: 3px;
     width: 100%;
-    background-color: aliceblue;
+    background-color: #f0ede2;
     border-radius: 10px;
 }
 
-/* Parallax Container */
-.parallax-container {
-    display: flex;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    white-space: nowrap;
-    height: 100vh;
-    width: 100%;
-    position: relative;
-    padding-top: 60px; /* To offset navbar */
-}
-
-/* Parallax items */
-.parallax-item {
-    display: inline-block;
-    position: relative;
-    min-width: 100vw; /* Make the items take up 70% of the viewport width */
-    max-width: 100vw;
-    height: 80vh; /* Occupy 80% of the viewport height */
-    margin: 0 10px;
-    scroll-snap-align: center;
-    overflow: hidden;
-}
-
-.parallax-item video, 
-.parallax-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the media covers the container while maintaining aspect ratio */
-    border-radius: 10px;
-}
-
-/* Responsive navbar for small screens */
+/* Responsive navbar */
 @media (max-width: 768px) {
     .toggle-button {
         display: flex;
@@ -105,6 +74,10 @@ body, html {
         display: none;
         width: 100%;
         flex-direction: column;
+        background-color: #656e33; 
+        position: absolute; 
+        top: 60px; 
+        left: 0;
     }
 
     .navbar-links.active {
@@ -125,16 +98,56 @@ body, html {
     }
 }
 
-/* Responsive adjustments for small screens */
-@media (max-width: 600px) {
-    .parallax-item {
-        min-width: 90vw; /* Take more width on smaller screens */
-        max-width: 90vw;
-        height: 60vh; /* Reduce height slightly */
-    }
+/* Background video container styles */
+.video-background-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;
+}
 
-    .parallax-item video, 
-    .parallax-item img {
-        object-fit: contain; /* Ensure the media fits within the smaller container */
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+}
+
+/* Title styles */
+.title-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f0ede2;
+    text-align: center;
+    z-index: 2; 
+}
+
+.title-overlay h1 {
+    font-size: 4rem; 
+    margin: 0;
+    padding: 15px; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 5px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .title-overlay h1 {
+        font-size: 3rem; /* Adjusted size for tablets */
+        padding: 10px; 
     }
 }
+
+@media (max-width: 480px) {
+    .title-overlay h1 {
+        font-size: 2rem; /* Adjusted size for mobile devices */
+        padding: 8px; 
+    }
+}
+
