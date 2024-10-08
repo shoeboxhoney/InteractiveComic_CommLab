@@ -50,5 +50,3 @@ updateArrows();
 // Update arrow visibility on scroll
 parallaxContainer.addEventListener('scroll', updateArrows);
 
-
-
