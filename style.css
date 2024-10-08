@@ -1,12 +1,19 @@
+/* General styles */
 * {
     box-sizing: border-box;
 }
 
-body {
+body, html {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent page overflow */
+    display: flex;
+    flex-direction: column;
 }
 
+/* Navbar styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -14,6 +21,10 @@ body {
     background-color: black;
     color: aliceblue;
     padding: 10px 20px;
+    width: 100%;
+    position: fixed; /* Keep the navbar fixed at the top */
+    top: 0;
+    z-index: 10; /* Ensure the navbar is always on top */
 }
 
 .navbar-links ul {
@@ -52,6 +63,39 @@ body {
     border-radius: 10px;
 }
 
+/* Parallax Container */
+.parallax-container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    padding-top: 60px; /* To offset navbar */
+}
+
+/* Parallax items */
+.parallax-item {
+    display: inline-block;
+    position: relative;
+    min-width: 100vw; /* Make the items take up 70% of the viewport width */
+    max-width: 100vw;
+    height: 80vh; /* Occupy 80% of the viewport height */
+    margin: 0 10px;
+    scroll-snap-align: center;
+    overflow: hidden;
+}
+
+.parallax-item video, 
+.parallax-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the media covers the container while maintaining aspect ratio */
+    border-radius: 10px;
+}
+
+/* Responsive navbar for small screens */
 @media (max-width: 768px) {
     .toggle-button {
         display: flex;
@@ -78,5 +122,19 @@ body {
 
     .navbar-links li a {
         padding: 0.5rem 1rem;
+    }
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+    .parallax-item {
+        min-width: 90vw; /* Take more width on smaller screens */
+        max-width: 90vw;
+        height: 60vh; /* Reduce height slightly */
+    }
+
+    .parallax-item video, 
+    .parallax-item img {
+        object-fit: contain; /* Ensure the media fits within the smaller container */
     }
 }
