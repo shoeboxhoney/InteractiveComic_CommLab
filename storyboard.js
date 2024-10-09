@@ -50,3 +50,20 @@ updateArrows();
 // Update arrow visibility on scroll
 parallaxContainer.addEventListener('scroll', updateArrows);
 
+// Audio settings
+
+const audio = document.getElementById('backgroundAudio');
+const audioButton = document.getElementById('audioButton');
+
+document.getElementById("audioButton").addEventListener("click", function() {
+    var audio = document.getElementById("backgroundAudio");
+    if (audio.muted) {
+        audio.muted = false;
+        this.textContent = "Mute";
+        audio.play();
+    } else {
+        audio.muted = true;
+        this.textContent = "Unmute";
+        audio.play();
+    }
+});
